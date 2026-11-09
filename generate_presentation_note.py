@@ -55,6 +55,17 @@ body_style = ParagraphStyle(
     textColor=primary_color
 )
 
+# Style strictly for meta bar to guarantee 1 single line on the exact same baseline
+meta_bar_style = ParagraphStyle(
+    'MetaBar',
+    parent=styles['Normal'],
+    fontName='Helvetica',
+    fontSize=8,
+    leading=10,
+    textColor=primary_color,
+    alignment=0
+)
+
 body_bold = ParagraphStyle(
     'DocBodyBold',
     parent=body_style,
@@ -98,19 +109,21 @@ story.append(HRFlowable(width="100%", thickness=1, color=terracotta, spaceBefore
 story.append(Paragraph("Note d'Intention & Présentation du Prototype", title_style))
 story.append(Paragraph("Candidature Alternance / Stage &bull; Développement Plateforme Web & IA &bull; <b>Oumaima Hrete (École 42)</b>", subtitle_style))
 
-# Meta Box
+# Meta Box: Adjusted widths and concise text so ALL 3 CELLS FIT ON EXACTLY 1 LINE, perfectly aligned horizontally
 meta_data = [
     [
-        Paragraph("<b>Candidature :</b> Alternance / Stage &bull; Fullstack & IA", body_style),
-        Paragraph("<b>Destinataire :</b> Olivia Cuir", body_style),
-        Paragraph("<b>Projet :</b> Plateforme Quotient Émotionnel", body_style)
+        Paragraph("<b>Candidature :</b> Alternance / Stage", meta_bar_style),
+        Paragraph("<b>Destinataire :</b> Olivia Cuir", meta_bar_style),
+        Paragraph("<b>Projet :</b> Plateforme Quotient Émotionnel", meta_bar_style)
     ]
 ]
-meta_table = Table(meta_data, colWidths=[6.4*cm, 5.8*cm, 6.2*cm])
+meta_table = Table(meta_data, colWidths=[6.0*cm, 5.4*cm, 7.0*cm])
 meta_table.setStyle(TableStyle([
     ('BACKGROUND', (0,0), (-1,-1), subtle),
     ('PADDING', (0,0), (-1,-1), 4),
     ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+    ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+    ('TOPPADDING', (0,0), (-1,-1), 4),
     ('BOX', (0,0), (-1,-1), 0.5, border_col)
 ]))
 story.append(meta_table)
