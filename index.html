@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SenCité – Plateforme du Quotient Émotionnel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo">
+                <span class="logo-title">SenCité</span>
+                <span class="logo-tag">Plateforme QE</span>
+            </div>
+            <div class="project-badge">
+                <span class="status-dot"></span>
+                <span class="project-name">Diagnostic : <strong>ZADIGA / Lyon Confluence</strong></span>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="version-badge">Prototype Démo • Candidature Alternance / Stage</span>
+            <button class="btn btn-outline" id="btn-export-preview">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Exporter Rapport
+            </button>
+        </div>
+    </header>
+
+    <!-- Subheader Philosophy Banner -->
+    <div class="philosophy-strip">
+        <p><em>« Ressentir et mesurer les espaces sociaux »</em> — Transformer des perceptions subjectives en données structurées et exploitables.</p>
+    </div>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="tab-questionnaire">
+            <span class="step-num">1</span>
+            <span class="step-title">Questionnaire Terrain</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-scoring">
+            <span class="step-num">2</span>
+            <span class="step-title">Calculateur de Score QE</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-ai">
+            <span class="step-num">3</span>
+            <span class="step-title">Analyse IA des Verbatims</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-sample">
+            <span class="step-num">4</span>
+            <span class="step-title">Quotas & Échantillon</span>
+        </button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-container">
+
+        <!-- ================= TAB 1: QUESTIONNAIRE ================= -->
+        <section id="tab-questionnaire" class="tab-content active">
+            <div class="section-header">
+                <div>
+                    <h2>Enquête In Situ (75 dimensions adaptatives)</h2>
+                    <p class="section-desc">Interface responsive conçue pour les enquêteurs sur le terrain. Les curseurs mesurent le ressenti émotionnel et sensoriel immédiat.</p>
+                </div>
+                <div class="respondent-info">
+                    <span class="tag">Usager #142</span>
+                    <span class="tag">Résident (35-49 ans)</span>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <!-- Dim 1: Lumière & Architecture -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="dim-icon">☀️</span>
+                        <div>
+                            <h3>Lumière & Ambiance Visuelle</h3>
+                            <p>Qualité de la lumière naturelle et ouverture de l'espace</p>
+                        </div>
+                    </div>
+                    <div class="slider-wrapper">
+                        <div class="slider-labels">
+                            <span>Sombre / Écrasant</span>
+                            <span class="slider-val" id="val-lumiere">78%</span>
+                            <span>Lumineux / Apaisant</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="78" class="sensory-slider" id="slider-lumiere">
+                    </div>
+                </div>
+
+                <!-- Dim 2: Acoustique -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="dim-icon">🌿</span>
+                        <div>
+                            <h3>Ambiance Acoustique & Sérénité</h3>
+                            <p>Perception des bruits urbains versus bruits naturels/calme</p>
+                        </div>
+                    </div>
+                    <div class="slider-wrapper">
+                        <div class="slider-labels">
+                            <span>Stressant / Cacophonie</span>
+                            <span class="slider-val" id="val-son">64%</span>
+                            <span>Harmonieux / Paisible</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="64" class="sensory-slider" id="slider-son">
+                    </div>
+                </div>
+
+                <!-- Dim 3: Sécurité ressentie -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="dim-icon">🛡️</span>
+                        <div>
+                            <h3>Sentiment de Sécurité & Clarté</h3>
+                            <p>Confiance ressentie de jour comme au crépuscule</p>
+                        </div>
+                    </div>
+                    <div class="slider-wrapper">
+                        <div class="slider-labels">
+                            <span>Anxiogène / Isolé</span>
+                            <span class="slider-val" id="val-securite">85%</span>
+                            <span>Serein / Rassurant</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="85" class="sensory-slider" id="slider-securite">
+                    </div>
+                </div>
+
+                <!-- Dim 4: Convivialité & Altérité -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="dim-icon">🤝</span>
+                        <div>
+                            <h3>Convivialité & « Ce qui nous relie »</h3>
+                            <p>Capacité du lieu à susciter des interactions et du lien social</p>
+                        </div>
+                    </div>
+                    <div class="slider-wrapper">
+                        <div class="slider-labels">
+                            <span>Indifférence / Rejet</span>
+                            <span class="slider-val" id="val-social">72%</span>
+                            <span>Rencontre / Partage</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="72" class="sensory-slider" id="slider-social">
+                    </div>
+                </div>
+
+                <!-- Dim 5: Attachement au lieu -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="dim-icon">🏛️</span>
+                        <div>
+                            <h3>Sentiment d'Appartenance & Fierté</h3>
+                            <p>Attachement affectif et envie de faire vivre ce lieu</p>
+                        </div>
+                    </div>
+                    <div class="slider-wrapper">
+                        <div class="slider-labels">
+                            <span>Étranger au site</span>
+                            <span class="slider-val" id="val-attachement">80%</span>
+                            <span>Fortement attaché</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="80" class="sensory-slider" id="slider-attachement">
+                    </div>
+                </div>
+
+                <!-- Dim 6: Végétal & Vivant -->
+                <div class="survey-card">
+                    <div class="card-header">
+                        <span class="dim-icon">🌱</span>
+                        <div>
+                            <h3>Rapport au Vivant & Végétalisation</h3>
+                            <p>Présence perceptible de la nature et fraîcheur</p>
+                        </div>
+                    </div>
+                    <div class="slider-wrapper">
+                        <div class="slider-labels">
+                            <span>Minéral / Éteint</span>
+                            <span class="slider-val" id="val-nature">60%</span>
+                            <span>Vivant / Respiration</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="60" class="sensory-slider" id="slider-nature">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer-action">
+                <button class="btn btn-primary" id="btn-sync-score">
+                    Synchroniser et Recalculer le Score QE &rarr;
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: CALCUL DU SCORE QE ================= -->
+        <section id="tab-scoring" class="tab-content">
+            <div class="section-header">
+                <div>
+                    <h2>Diagnostic Quantitatif : Le Score SenCité</h2>
+                    <p class="section-desc">Formule de scoring pondéré basée sur la méthodologie SenCité et la géographie du sensible.</p>
+                </div>
+                <div class="timestamp-badge">
+                    Mise à jour temps réel • N = 142 répondants
+                </div>
+            </div>
+
+            <div class="score-dashboard">
+                <!-- Big Score Card -->
+                <div class="big-score-card">
+                    <span class="score-label">Quotient Émotionnel Global</span>
+                    <div class="score-circle">
+                        <span class="score-number" id="global-qe-score">74</span>
+                        <span class="score-max">/100</span>
+                    </div>
+                    <div class="score-interpretation" id="score-status">
+                        Espace Hautement Qualitatif & Harmonieux
+                    </div>
+                    <p class="score-detail">Le lieu suscite un fort sentiment de sécurité et une grande fierté d'usage, avec une marge de progression sur la végétalisation.</p>
+                </div>
+
+                <!-- Dimension Breakdown Bars -->
+                <div class="dimension-bars-card">
+                    <h3>Décomposition par Piliers Sensoriels & Sociaux</h3>
+                    
+                    <div class="bar-item">
+                        <div class="bar-header">
+                            <span>Lumière & Ambiance</span>
+                            <strong id="bar-val-lumiere">78/100</strong>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" id="bar-fill-lumiere" style="width: 78%;"></div></div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-header">
+                            <span>Acoustique & Calme</span>
+                            <strong id="bar-val-son">64/100</strong>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" id="bar-fill-son" style="width: 64%;"></div></div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-header">
+                            <span>Sécurité Ressentie</span>
+                            <strong id="bar-val-securite">85/100</strong>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" id="bar-fill-securite" style="width: 85%;"></div></div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-header">
+                            <span>Convivialité & Liens</span>
+                            <strong id="bar-val-social">72/100</strong>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" id="bar-fill-social" style="width: 72%;"></div></div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-header">
+                            <span>Attachement & Fierté</span>
+                            <strong id="bar-val-attachement">80/100</strong>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" id="bar-fill-attachement" style="width: 80%;"></div></div>
+                    </div>
+
+                    <div class="bar-item">
+                        <div class="bar-header">
+                            <span>Rapport au Vivant / Nature</span>
+                            <strong id="bar-val-nature">60/100</strong>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" id="bar-fill-nature" style="width: 60%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: IA & NLP ================= -->
+        <section id="tab-ai" class="tab-content">
+            <div class="section-header">
+                <div>
+                    <h2>Analyse Qualitative & IA (Traitement du Langage Naturel)</h2>
+                    <p class="section-desc">L'IA analyse les réponses libres des usagers, détecte la charge émotionnelle, extrait les points de friction et génère des recommandations programmatiques.</p>
+                </div>
+            </div>
+
+            <div class="ai-playground">
+                <div class="ai-input-card">
+                    <label for="user-verbatim"><strong>Verbatim Usager (Commentaire libre recueilli sur le site) :</strong></label>
+                    <textarea id="user-verbatim" rows="4">J'adore venir travailler dans cet îlot le matin, la verrière laisse passer une lumière magnifique et on se sent tout de suite apaisé. En revanche, en fin d'après-midi, les bruits de livraison sur la rue Vuillerme deviennent très agressifs et on manque d'arbres pour s'isoler un peu.</textarea>
+                    
+                    <div class="presets-row">
+                        <span>Exemples types :</span>
+                        <button class="preset-btn" data-preset="1">Sécurité & Soir</button>
+                        <button class="preset-btn" data-preset="2">Convivialité Tiers-lieu</button>
+                        <button class="preset-btn" data-preset="3">Bruit & Minéralité</button>
+                    </div>
+
+                    <button class="btn btn-primary" id="btn-run-ai">
+                        <span class="ai-sparkle">✨</span> Lancer l'Analyse Sémantique IA
+                    </button>
+                </div>
+
+                <div class="ai-output-card" id="ai-results">
+                    <div class="ai-loading" id="ai-spinner" style="display: none;">
+                        <div class="spinner"></div>
+                        <span>Modélisation sémantique et extraction des sentiments en cours...</span>
+                    </div>
+
+                    <div id="ai-content">
+                        <h3>Résultats de l'Analyse IA</h3>
+                        
+                        <div class="emotion-tags">
+                            <span class="badge badge-positive">Sérénité matinale (+0.84)</span>
+                            <span class="badge badge-positive">Sensibilité esthétique / Lumière (+0.91)</span>
+                            <span class="badge badge-negative">Irritant sonore : Livraisons (-0.72)</span>
+                            <span class="badge badge-warning">Déficit végétal perçu</span>
+                        </div>
+
+                        <div class="ai-recommendations">
+                            <h4>Recommandation Programmatique Générée :</h4>
+                            <p class="ai-quote">« Le site capitalise sur une identité lumineuse exceptionnelle. Afin de préserver le Quotient Émotionnel en deuxième partie de journée, il est recommandé de travailler une isolation phonique passive sur la façade sud (sas végétalisé ou rideau acoustique végétal). »</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: QUOTAS & ECHANTILLONS ================= -->
+        <section id="tab-sample" class="tab-content">
+            <div class="section-header">
+                <div>
+                    <h2>Échantillonnage par Quotas Socio-Démographiques</h2>
+                    <p class="section-desc">Garantir la représentativité scientifique de l'enquête pour éviter les biais sociologiques.</p>
+                </div>
+            </div>
+
+            <div class="sample-grid">
+                <div class="sample-card">
+                    <h3>Typologie d'Usagers</h3>
+                    <div class="quota-row">
+                        <span>Résidents du quartier</span>
+                        <strong>45% (Cible : 40%)</strong>
+                    </div>
+                    <div class="quota-row">
+                        <span>Travailleurs / Coworkers</span>
+                        <strong>35% (Cible : 35%)</strong>
+                    </div>
+                    <div class="quota-row">
+                        <span>Visiteurs / En transit</span>
+                        <strong>20% (Cible : 25%)</strong>
+                    </div>
+                </div>
+
+                <div class="sample-card">
+                    <h3>Tranches d'Âge</h3>
+                    <div class="quota-row">
+                        <span>18 - 29 ans</span>
+                        <strong>28%</strong>
+                    </div>
+                    <div class="quota-row">
+                        <span>30 - 49 ans</span>
+                        <strong>42%</strong>
+                    </div>
+                    <div class="quota-row">
+                        <span>50 ans et +</span>
+                        <strong>30%</strong>
+                    </div>
+                </div>
+
+                <div class="sample-card">
+                    <h3>Statut de Collecte Terrain</h3>
+                    <div class="stat-highlight">
+                        <span class="stat-num">142</span>
+                        <span class="stat-desc">Entretiens approfondis réalisés (~45 min)</span>
+                    </div>
+                    <div class="progress-bar-sample">
+                        <div class="progress-fill" style="width: 95%;"></div>
+                    </div>
+                    <span class="progress-label">Objectif de l'échantillon : 95% atteint</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal: Client Report Preview -->
+    <div class="modal-overlay" id="report-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Aperçu du Rapport Client Automatisé (PDF)</h3>
+                <button class="close-btn" id="btn-close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="report-cover">
+                    <span class="report-brand">SenCité • Diagnostic Émotionnel</span>
+                    <h2>Rapport d'Évaluation Sensible</h2>
+                    <p class="report-site">Site : <strong>ZADIGA-Cité / Îlot Vuillerme, Lyon</strong></p>
+                    <div class="report-metrics-box">
+                        <div class="metric">
+                            <span>Score Global QE</span>
+                            <strong id="modal-score">74/100</strong>
+                        </div>
+                        <div class="metric">
+                            <span>Échantillon</span>
+                            <strong>142 usagers</strong>
+                        </div>
+                        <div class="metric">
+                            <span>Niveau de confiance</span>
+                            <strong>95% (Méthode Quotas)</strong>
+                        </div>
+                    </div>
+                    <div class="report-summary">
+                        <h4>Synthèse des Enseignements Clés :</h4>
+                        <p>Le lieu présente une signature sensible rare sur le plan de la lumière naturelle et de la convivialité. Les irritants majeurs se concentrent sur la transition acoustique en heure de pointe.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="btn-close-modal-2">Fermer</button>
+                <a href="Rapport_SenCite_Diagnostic.pdf" download="Rapport_SenCite_Diagnostic_Lyon_Confluence.pdf" class="btn btn-primary" style="text-decoration: none;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Télécharger le PDF complet
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
